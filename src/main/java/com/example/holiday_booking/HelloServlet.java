@@ -1,6 +1,7 @@
 package com.example.holiday_booking;
 
 import java.io.*;
+import java.sql.SQLException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
@@ -20,6 +21,11 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
+        try {
+            DBConnection.connecttoDB();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void destroy() {

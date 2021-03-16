@@ -39,6 +39,7 @@
 
         </div> <br>
         <div><img src="" style="width:700px;height:504px;"></div>
+        <a href="hello-servlet">Hello Servlet</a>
     </div>
 </div>
 </body>
