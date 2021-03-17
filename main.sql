@@ -40,16 +40,17 @@ CREATE TABLE `flats` (
                          `wifi` tinyint(1) DEFAULT 0,
                          `tv` tinyint(1) DEFAULT 0,
                          `shower` tinyint(1) DEFAULT 0,
-                         `kitchen` tinyint(1) DEFAULT 0
+                         `kitchen` tinyint(1) DEFAULT 0,
+                         `washer` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `flats`
 --
 
-INSERT INTO `flats` (`id`, `name`, `size`, `price`, `info`, `adress`, `singlebed`, `doublebed`, `wifi`, `tv`, `shower`, `kitchen`) VALUES
-(1, 'Wohnung 1', 19, 200, 'Geile Wohnung', 'Mannheimer Straße 5-7', 1, 0, 1, 0, 1, 1),
-(2, 'Wohnung 2', 19, 212, 'Geile Wohnung', 'Mannheimer Straße 5-7', 1, 0, 1, 0, 1, 1);
+INSERT INTO `flats` (`id`, `name`, `size`, `price`, `info`, `adress`, `singlebed`, `doublebed`, `wifi`, `tv`, `shower`, `kitchen`, `washer`) VALUES
+(1, 'Wohnung 1', 22, 210, 'Geile Wohnung', 'Mannheimer Straße 5-7', 1, 0, 1, 1, 1, 1, 0),
+(2, 'Wohnung 2', 19, 190, 'Geile Wohnung', 'Mannheimer Straße 5-7', 1, 0, 1, 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 

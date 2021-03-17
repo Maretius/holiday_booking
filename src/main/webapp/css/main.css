@@ -39,11 +39,11 @@ body {
 }
 
 .flat-div-middle-top {
-    font-size: 18px;
+    font-size: 12px;
 }
 
 .flat-div-middle-bot {
-    font-size: 10px;
+    font-size: 30px;
 }
 
 .flat-div-right {
@@ -59,7 +59,7 @@ hr {
 
 
 
-ul {
+.navbar-ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -68,23 +68,25 @@ ul {
     background-color: #c1e3dd;
 }
 
-li {
+.navbar-li {
     float: left;
     width: 16.66%;
 }
 
-li a {
+.navbar-li a {
     display: block;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-
-li a:hover {
+.navbar-li a:hover {
     background-color: #9ccfc5;
 }
 
+.flat-div-middle-top-li {
+    text-align: left;
+}
 
 
 
@@ -98,7 +100,7 @@ a:link a:visited a:hover a:active{
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
+    font-size: 30px;
     display: inline-block;
     line-height: 1;
     text-transform: none;
@@ -111,10 +113,8 @@ a:link a:visited a:hover a:active{
     -webkit-font-smoothing: antialiased;
     /* Support for Safari and Chrome. */
     text-rendering: optimizeLegibility;
-
     /* Support for Firefox. */
     -moz-osx-font-smoothing: grayscale;
-
     /* Support for IE. */
     font-feature-settings: 'liga';
 }

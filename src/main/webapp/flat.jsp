@@ -8,6 +8,8 @@
 <body>
 <%@include  file="navbar.jsp" %>
 
+<h1><%=request.getParameter("flatName")%></h1>
+
 
 </body>
 </html>

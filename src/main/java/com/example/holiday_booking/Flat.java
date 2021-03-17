@@ -17,6 +17,7 @@ public class Flat {
     public int tv;
     public int shower;
     public int kitchen;
+    public int washer;
 
     public static Flat readOne(int id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM flats WHERE id="+id ;
@@ -32,6 +33,7 @@ public class Flat {
            flat.tv =  rs.getInt("tv");
            flat.shower =  rs.getInt("shower");
            flat.kitchen =  rs.getInt("kitchen");
+           flat.washer =  rs.getInt("washer");
            flat.info = rs.getString("info");
            flat.name = rs.getString("name");
         }
@@ -53,6 +55,7 @@ public class Flat {
             flat.tv =  rs.getInt("tv");
             flat.shower =  rs.getInt("shower");
             flat.kitchen =  rs.getInt("kitchen");
+            flat.washer =  rs.getInt("washer");
             flat.info = rs.getString("info");
             flat.name = rs.getString("name");
             flatlist.add(flat);
@@ -66,8 +69,7 @@ public class Flat {
 
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
 
-        int count = rs.getInt("rowcount");
-        return count;
+        return rs.getInt("rowcount");
     }
 
 

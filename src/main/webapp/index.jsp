@@ -11,10 +11,10 @@
 
     <div class="contents">
         <div id="contentname">
-            <h2>Willkommen!</h2>
+            <h2>Herzlich Willkommen!</h2>
         </div>
         <br>
-        <div class = "indexdiv">
+        <div class="indexdiv">
             Wenn Sie ein ruhiges zu Hause für Ihren Urlaub suchen, schauen Sie sich auf unserer Homepage einmal um.<br>
 
             Wir bieten zwei angenehme Ferienwohnungen für schöne Tage in Grünau.<br>
@@ -23,7 +23,7 @@
 
             Die Wohnungen bieten aber auch für Monteure eine gemütliche Atmosphäre für einen verdienten Feierabend.<br><br>
 
-            <a href="">Zur Wohnungsübersicht</a><br>
+            <a href="flats.jsp">Zur Wohnungsübersicht</a><br>
 
         </div> <br>
         <div><img src="images/flats/Wohnung%201/Bild3.jpg" style="width:700px;height:504px;" alt="Bild"></div>
