@@ -14,7 +14,50 @@ body {
 
 .navbar {
     box-shadow: 0 0 50px #b5d2cd;
+    margin-bottom: 60px;
 }
+
+.flat-div {
+    width: 50%;
+    height: 100px;
+    position: relative;
+    margin: auto;
+}
+
+.flat-div-left {
+    float: left;
+    width: 20%;
+}
+
+.flat-div-left img {
+    height: 100px;
+}
+
+.flat-div-middle {
+    float: left;
+    width: 30%;
+}
+
+.flat-div-middle-top {
+    font-size: 18px;
+}
+
+.flat-div-middle-bot {
+    font-size: 10px;
+}
+
+.flat-div-right {
+    float: left;
+    font-size: 14px;
+}
+
+hr {
+    width: 40%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+
 
 ul {
     list-style-type: none;
