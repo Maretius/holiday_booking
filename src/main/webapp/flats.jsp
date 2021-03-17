@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Wohnungen</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <%
     Flat flat = null;

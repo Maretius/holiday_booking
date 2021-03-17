@@ -1,0 +1,45 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #000000;
+    background-color: #c1e3dd;
+}
+
+li {
+    float: left;
+    width: 20%;
+}
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #9ccfc5;
+}
+
+
+
+
+
+/* links */
+a:link a:visited a:hover a:active{
+    text-decoration: none;
+}

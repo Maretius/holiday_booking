@@ -4,12 +4,14 @@
 <html>
 <head>
     <title>Ferienwohnung Grünau</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<div id="background">
+<%@include  file="navbar.jsp" %>
+
     <div class = "header"><h1>Startseite</h1>
 
-        <%@include  file="navbar.jsp" %>
+
 
     </div>
     <div class="contents">
@@ -32,6 +34,6 @@
         </div> <br>
         <div><img src="" style="width:700px;height:504px;"></div>
     </div>
-</div>
+
 </body>
 </html>
