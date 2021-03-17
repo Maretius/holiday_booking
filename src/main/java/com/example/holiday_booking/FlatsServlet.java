@@ -5,12 +5,13 @@ import java.sql.SQLException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class HelloServlet extends HttpServlet {
-    private String message;
+@WebServlet(name = "FlatsServlet", value = "/flats")
+public class FlatsServlet extends HttpServlet{
+    private String flat1;
+    private String flat2;
 
     public void init() {
-        message = "Hello MAlte!";
+
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -19,13 +20,9 @@ public class HelloServlet extends HttpServlet {
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
+        out.println("<h1>" + flat1 + "</h1>");
         out.println("</body></html>");
-        try {
-            DBConnection.connecttoDB();
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
+
     }
 
     public void destroy() {

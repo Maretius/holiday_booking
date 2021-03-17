@@ -1,3 +1,4 @@
+<%@ page import="com.example.holiday_booking.DBConnection" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -8,21 +9,12 @@
 <div id="background">
     <div class = "header"><h1>Startseite</h1>
 
-        <div class="navbar">
-            <a class ="active" href="index.jsp">Home</a>
-            <a href="">Wohnungen</a>
-            <a href="">Preise</a>
-            <a href="">Belegung</a>
-            <a href="">Buchung</a>
-            <a href="">Anfahrt</a>
-            <a href="">Kontakt</a>
-            <a href="">Impressum</a>
-        </div>
+        <%@include  file="navbar.jsp" %>
 
     </div>
     <div class="contents">
         <div id="contentname">
-            <h2>Willkommen, schön, dass sie sich für die Ferienwohnung Grünau interressieren!</h2>
+            <h2>Willkommen!</h2>
         </div>
         <br>
         <div class = "indexdiv">
@@ -39,7 +31,6 @@
 
         </div> <br>
         <div><img src="" style="width:700px;height:504px;"></div>
-        <a href="hello-servlet">Hello Servlet</a>
     </div>
 </div>
 </body>
