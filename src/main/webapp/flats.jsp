@@ -27,7 +27,7 @@
 %>
 
 <div class="flat-div">
-    <div class="flat-div-left"><img src="images/flats/<%=flat.name%>/Bild1.jpg" alt=""></div>
+    <div class="flat-div-left"><img src="images/flats/<%=flat.name%>/Bild1.jpg" alt="Bild"></div>
     <div class="flat-div-middle">
         <div class="flat-div-middle-top"><h2><%=flat.name%></h2><p><%=flat.info%></p></div>
         <div class="flat-div-middle-bot"> </div></div>
