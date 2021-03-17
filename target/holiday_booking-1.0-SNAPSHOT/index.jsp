@@ -21,13 +21,12 @@
 
             Sie können in unmittelbarer Nähe Wanderungen, Radtouren oder Ausflüge unternehmen.<br>
 
-            Die Wohnungen bieten aber auch für Monteure eine gemütliche Atmosphäre für einen verdienten Feierabend.<br>
+            Die Wohnungen bieten aber auch für Monteure eine gemütliche Atmosphäre für einen verdienten Feierabend.<br><br>
 
-            <br>
-            <a href="">Zur Wohnungsübersicht</a> <br>
+            <a href="">Zur Wohnungsübersicht</a><br>
 
         </div> <br>
-        <div><img src="" style="width:700px;height:504px;"></div>
+        <div><img src="images/flats/Wohnung%201/Bild1.jpg" style="width:700px;height:504px;" alt="Bild"></div>
     </div>
 
 </body>
