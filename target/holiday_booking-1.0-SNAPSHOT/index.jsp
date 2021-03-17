@@ -9,11 +9,6 @@
 <body>
 <%@include  file="navbar.jsp" %>
 
-    <div class = "header"><h1>Startseite</h1>
-
-
-
-    </div>
     <div class="contents">
         <div id="contentname">
             <h2>Willkommen!</h2>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 html {
     height: 100%;
     width: 100%;
@@ -7,6 +9,11 @@ body {
     font-size: 20px;
     text-align: center;
     margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 0 50px #b5d2cd;
 }
 
 ul {
