@@ -66,13 +66,10 @@ public class DBConnection {
     public static ResultSet connecttoDBtoSelect(String sql) throws SQLException, ClassNotFoundException {
         Connection conn = null;
         Statement stmt = null;
-        Flat flat = new Flat();
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-
-
         return rs;
     }
 
