@@ -24,18 +24,19 @@ public class Flat {
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
         Flat flat = new Flat();
         while (rs.next()) {
-           flat.price = rs.getInt("price");
-           flat.size =  rs.getInt("size");
-           flat.adress =  rs.getString("adress");
-           flat.singlebed =  rs.getInt("singlebed");
-           flat.doublebed =  rs.getInt("doublebed");
-           flat.wifi =  rs.getInt("wifi");
-           flat.tv =  rs.getInt("tv");
-           flat.shower =  rs.getInt("shower");
-           flat.kitchen =  rs.getInt("kitchen");
-           flat.washer =  rs.getInt("washer");
-           flat.info = rs.getString("info");
-           flat.name = rs.getString("name");
+            flat.id = rs.getInt("id");
+            flat.price = rs.getInt("price");
+            flat.size =  rs.getInt("size");
+            flat.adress =  rs.getString("adress");
+            flat.singlebed =  rs.getInt("singlebed");
+            flat.doublebed =  rs.getInt("doublebed");
+            flat.wifi =  rs.getInt("wifi");
+            flat.tv =  rs.getInt("tv");
+            flat.shower =  rs.getInt("shower");
+            flat.kitchen =  rs.getInt("kitchen");
+            flat.washer =  rs.getInt("washer");
+            flat.info = rs.getString("info");
+            flat.name = rs.getString("name");
         }
      return flat;
     }
@@ -46,6 +47,7 @@ public class Flat {
         ArrayList<Flat> flatlist = new ArrayList<>();
         while (rs.next()) {
             Flat flat = new Flat();
+            flat.id = rs.getInt("id");
             flat.price = rs.getInt("price");
             flat.size =  rs.getInt("size");
             flat.adress =  rs.getString("adress");
@@ -62,15 +64,4 @@ public class Flat {
         }
         return flatlist;
     }
-
-
-    public static int countFlats() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT COUNT(id) AS rowcount FROM flats";
-
-        ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
-
-        return rs.getInt("rowcount");
-    }
-
-
 }
