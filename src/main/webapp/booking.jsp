@@ -38,6 +38,7 @@
     </div>
 
 </div>
+<hr>
 <div>
     <div>
         <h3>Von Wann bis Wann?</h3>
@@ -51,12 +52,21 @@
         <p></p>
     </div>
 </div>
-
+<hr>
 <div>
     <div>
         <h3>Nutzerdaten</h3>
     </div>
+    <div>Wie es scheint bist du noch nicht eingeloggt. Logge dich hier ein!</div>
     <div>
+        <label>
+            <input type="email" id="emaillogin"> E-Mail</label><br>
+        <label>
+            <input type="password" id="passwordlogin"> Passwort</label><br>
+        <input type="submit" value="Anmelden">
+    </div>
+    <div>
+        <h4>Noch kein Konto? Hier Registrieren!</h4>
         <label>
             <input type="text" id="firstname"> Vorname</label><br>
         <label>
@@ -67,6 +77,14 @@
             <input type="password" id="password"> Passwort</label><br>
         <input type="submit" value="Konto erstellen">
     </div>
+
+</div>
+<hr>
+<div>
+    <div>
+        <h3>Buchung bestätigen und Kostenpflichtig buchen.</h3>
+    </div>
+    <div><input type="submit" value="Jetzt buchen"></div>
 
 </div>
 
