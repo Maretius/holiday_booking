@@ -101,6 +101,7 @@ a:link a:visited a:hover a:active{
     font-size: 30px;
     display: inline-block;
     line-height: 1;
+    vertical-align: bottom;
     text-transform: none;
     letter-spacing: normal;
     word-wrap: normal;

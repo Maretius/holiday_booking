@@ -30,7 +30,7 @@
                         e.printStackTrace();
                     }
                     for (Flat flat : flatlist) {%>
-                <option name="wohnung" <%if (Integer.parseInt(request.getParameter("id"))==flat.id){ %>selected<% }%>><%=flat.name%></option>
+                <option name="wohnung" <%if (request.getParameter("id") != null && Integer.parseInt(request.getParameter("id"))==flat.id){%>selected<% }%>><%=flat.name%></option>
                 <%  }%>
             </select>
         </label>
