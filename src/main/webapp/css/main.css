@@ -78,6 +78,7 @@ hr {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    color: black;
 }
 
 .navbar-li a:hover {
@@ -89,9 +90,6 @@ hr {
 }
 
 
-
-
-/* links */
 a:link a:visited a:hover a:active{
     text-decoration: none;
 }

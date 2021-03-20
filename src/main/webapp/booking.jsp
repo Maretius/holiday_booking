@@ -18,23 +18,22 @@
         <h3>Wohnung?</h3>
     </div>
     <div>
-    <%
-        ArrayList<Flat> flatlist = new ArrayList<Flat>();
-        try {
-            flatlist=Flat.readAll();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        for (Flat flat : flatlist) {
-
-    %>
-
-        <label>
-        <input type="radio" name="wohnung" value="flat.name" <%if (flat.name.equals(request.getParameter("flatName"))){ %>checked<% }%>> <%=flat.name%></label><br>
-    <%}%>
+        <label>Wohnung:
+            <select>
+                <%
+                    ArrayList<Flat> flatlist = new ArrayList<Flat>();
+                    try {
+                        flatlist=Flat.readAll();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    for (Flat flat : flatlist) {%>
+                <option name="wohnung" <%if (Integer.parseInt(request.getParameter("id"))==flat.id){ %>selected<% }%>><%=flat.name%></option>
+                <%  }%>
+            </select>
+        </label>
     </div>
 
 </div>

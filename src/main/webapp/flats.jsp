@@ -26,9 +26,10 @@
     for (Flat flat : flatlist) {
 
 %>
-
 <div class="flat-div">
-    <a href="flat.jsp?flatName=<%=flat.name%>&flatSize=<%=flat.size%>&flatPrice=<%=flat.price%>&flatWifi=<%=flat.wifi%>&flatTv=<%=flat.tv%>&flatShower=<%=flat.shower%>&flatKitchen=<%=flat.kitchen%>&flatWasher=<%=flat.washer%>&flatInfo=<%=flat.info%>&flatSinglebed=<%=flat.singlebed%>&flatDoublebed=<%=flat.doublebed%>"><div class="flat-div-left"><img src="images/flats/<%=flat.name%>/Bild1.jpg" alt="Bild"></div></a>
+    <a href="flat.jsp?id=<%=flat.id%>"><div class="flat-div-left">
+            <img src="images/flats/<%=flat.name%>/Bild1.jpg" alt="Bild">
+    </div></a>
     <div class="flat-div-middle">
         <div class="flat-div-middle-top">
             <h2><%=flat.name%></h2>
@@ -39,10 +40,20 @@
             </ul>
         </div>
         <div class="flat-div-middle-bot">
-            <span class="material-icons"><% if (flat.wifi == 1){ %>wifi<% } if(flat.tv == 1){ %>personal_video<% } if(flat.shower == 1){ %>shower<% } if(flat.kitchen == 1){ %>countertops<% } if(flat.washer == 1){ %>local_laundry_service<% } %></span>
+            <span class="material-icons">
+                <% if (flat.wifi == 1){ %>wifi
+                <% } if(flat.tv == 1){ %>personal_video
+                <% } if(flat.shower == 1){ %>shower
+                <% } if(flat.kitchen == 1){ %>countertops
+                <% } if(flat.washer == 1){ %>local_laundry_service
+                <% } %>
+            </span>
         </div>
     </div>
-    <div class="flat-div-right"><h2><%="ab " + flat.price + "€ pro Nacht"%></h2><a href="flat.jsp?flatName=<%=flat.name%>&flatSize=<%=flat.size%>&flatPrice=<%=flat.price%>&flatWifi=<%=flat.wifi%>&flatTv=<%=flat.tv%>&flatShower=<%=flat.shower%>&flatKitchen=<%=flat.kitchen%>&flatWasher=<%=flat.washer%>&flatInfo=<%=flat.info%>&flatSinglebed=<%=flat.singlebed%>&flatDoublebed=<%=flat.doublebed%>"><button class="flat-div-right-button">Mehr Infos</button></a></div>
+    <div class="flat-div-right">
+        <h2><%="ab " + flat.price + "€ pro Nacht"%></h2>
+        <a href="flat.jsp?id=<%=flat.id%>"><button class="flat-div-right-button">Mehr Infos</button></a>
+    </div>
 </div>
 <hr>
 <%}%>
