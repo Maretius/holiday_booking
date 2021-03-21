@@ -44,9 +44,9 @@
     </div>
     <div>
         <label>
-            <input type="date" id="startdate"> Startdatum</label><br>
+            <input type="date" name="startdate"> Startdatum</label><br>
         <label>
-            <input type="date" id="enddate"> Enddatum</label><br>
+            <input type="date" name="enddate"> Enddatum</label><br>
         <input type="submit" value="Verfügbarkeit prüfen">
         <p></p>
     </div>
@@ -75,7 +75,9 @@
     <div>
         <h3>Buchung bestätigen und Kostenpflichtig buchen.</h3>
     </div>
-    <div><input type="submit" value="Jetzt buchen"></div>
+    <div>
+           <input type="submit" value="Jetzt buchen">
+    </div>
 
 </div>
 

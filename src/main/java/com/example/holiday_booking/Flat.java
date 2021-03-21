@@ -41,6 +41,16 @@ public class Flat {
      return flat;
     }
 
+    public static int readOneName(String flatname) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM flats WHERE name="+flatname ;
+        ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
+        Flat flat = new Flat();
+        while (rs.next()) {
+            flat.id = rs.getInt("id");
+        }
+        return flat.id;
+    }
+
     public static ArrayList<Flat> readAll() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM flats";
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);

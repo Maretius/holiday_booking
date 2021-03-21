@@ -31,6 +31,17 @@ public class User {
         return user;
     }
 
+    public static int readOneEmail(String email) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM users WHERE email='"+email;
+        ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
+        User user = new User();
+        while (rs.next()) {
+            user.id = rs.getInt("id");
+
+        }
+        return user.id;
+    }
+
     public static void writeOne(String firstname, String lastname, String email, String password, String role) throws SQLException, ClassNotFoundException {
         String passwordhash = toHash(password);
         String sql = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `role`, `password`) "
