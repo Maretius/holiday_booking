@@ -1,10 +1,9 @@
-
 -- phpMyAdmin SQL Dump
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 17. Mrz 2021 um 14:45
+-- Erstellungszeit: 21. Mrz 2021 um 12:32
 -- Server-Version: 10.4.18-MariaDB
 -- PHP-Version: 8.0.3
 
@@ -83,6 +82,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Daten für Tabelle `users`
+--
+
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `role`, `password`) VALUES
+(1, 'Hans', 'Günther', 'hansguenther@freemail.lul', 'guest', '1509442'),
+(2, 'Manfred', 'Auerbach', 'Auerhauer@freemail.lul', 'guest', '1509442');
+
+--
 -- Indizes der exportierten Tabellen
 --
 
@@ -126,7 +133,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints der exportierten Tabellen
