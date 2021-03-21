@@ -15,42 +15,13 @@ public class DBConnection {
 
     }
 
-    public static void connecttoDBtoUpdate(String sql) {
-        System.out.println("init");
+    public static void connecttoDBtoUpdate(String sql) throws ClassNotFoundException, SQLException {
         Connection conn = null;
         Statement stmt = null;
-        try {
-            // Register JDBC driver
             Class.forName(JDBC_DRIVER);
-            // Open a connection
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            // Execute a query
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
-
-        } catch (SQLException se) {
-            // Handle errors for JDBC
-            se.printStackTrace();
-        } catch (Exception e) {
-            // Handle errors for Class.forName
-            e.printStackTrace();
-        } finally {
-            // finally block used to close resources
-            try {
-                if (stmt != null) {
-                    conn.close();
-                }
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }//end finally try
-        }//end try
     }
 
     public static ResultSet connecttoDBtoSelect(String sql) throws SQLException, ClassNotFoundException {

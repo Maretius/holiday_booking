@@ -14,7 +14,8 @@ public class User {
 
 
     public static User readOne(String email, String password) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM users WHERE email='" + email.trim() +"'  AND password='" + password.trim() + "' ";
+        String passwordhash = toHash(password);
+        String sql = "SELECT * FROM users WHERE email='" + email.trim() +"'  AND password='" + passwordhash.trim() + "' ";
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
         User user = new User();
 
@@ -26,12 +27,22 @@ public class User {
             user.role  = rs.getString("role");
             user.password = rs.getString("password");
         }
+        System.out.println(user.firstname);
         return user;
     }
 
+    public static void writeOne(String firstname, String lastname, String email, String password, String role) throws SQLException, ClassNotFoundException {
+        String passwordhash = toHash(password);
+        String sql = "INSERT INTO `users`(`firstname`, `lastname`, `email`, `role`, `password`) "
+                + "VALUES ('"+firstname.trim() +"', '"+lastname.trim()+"', '"+email.trim()+"', '"+role.trim()+"', '"+passwordhash.trim()+"')";
+        DBConnection.connecttoDBtoUpdate(sql);
+    }
 
-
-
+    private static String toHash(String password) {
+        int hashcode = password.hashCode();
+        String hash = ""+hashcode+"";
+        return hash;
+    }
 
 
 }

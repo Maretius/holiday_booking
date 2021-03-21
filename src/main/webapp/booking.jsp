@@ -56,26 +56,18 @@
     <div>
         <h3>Nutzerdaten</h3>
     </div>
-    <div>Wie es scheint bist du noch nicht eingeloggt. Logge dich hier ein!</div>
+
+    <%
+        if(session.getAttribute("loginemail") == null ) {
+    %>
+    <div>Wie es scheint bist du noch nicht eingeloggt. Logge dich hier ein!<a href="login.jsp"><button>Zum Login</button></a></div>
+    <%}else{%>
+
+
     <div>
-        <label>
-            <input type="email" id="emaillogin"> E-Mail</label><br>
-        <label>
-            <input type="password" id="passwordlogin"> Passwort</label><br>
-        <input type="submit" value="Anmelden">
+        <h4>Angemeldet als <%=session.getAttribute("loginfirstname")%> <%=session.getAttribute("loginlastname")%></h4>
     </div>
-    <div>
-        <h4>Noch kein Konto? Hier Registrieren!</h4>
-        <label>
-            <input type="text" id="firstname"> Vorname</label><br>
-        <label>
-            <input type="text" id="lastname"> Nachname</label><br>
-        <label>
-            <input type="email" id="email"> E-Mail</label><br>
-        <label>
-            <input type="password" id="password"> Passwort</label><br>
-        <input type="submit" value="Konto erstellen">
-    </div>
+    <%}%>
 
 </div>
 <hr>
