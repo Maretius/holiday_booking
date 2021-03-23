@@ -18,10 +18,8 @@
     if(session.getAttribute("prüfungerfolgreich") != null && request.getParameter("startdate") != null && request.getParameter("enddate") != null && request.getParameter("wohnung") != null) {
 
         String email = (String) session.getAttribute("loginemail");
-        Timestamp start = Timestamp.valueOf(request.getParameter("startdate"));
-        Timestamp end = Timestamp.valueOf(request.getParameter("enddate"));
         try {
-            Reservation.writeOne(email, request.getParameter("wohnung"), start, end);
+            Reservation.writeOne(email, request.getParameter("wohnung"), request.getParameter("startdate"), request.getParameter("enddate"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -29,7 +27,7 @@
         }
     }
 
-    if(request.getParameter("wohnung") != null) {
+    if(request.getParameter("wohnung") != null && session.getAttribute("prüfungerfolgreich") == null) {
         System.out.println("prüfen");
         System.out.println(request.getParameter("wohnung"));
         System.out.println(request.getParameter("startdate"));
