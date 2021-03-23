@@ -11,7 +11,7 @@ public class Reservation {
     String status;
 
 
-    public void writeOne(String email, String flatname, Timestamp start, Timestamp end) throws SQLException, ClassNotFoundException {
+    public static void writeOne(String email, String flatname, Timestamp start, Timestamp end) throws SQLException, ClassNotFoundException {
         int user_id = User.readOneEmail(email);
         int flat_id = Flat.readOneName(flatname);
         String sql = "INSERT INTO `reservation`(`user_id`, `flat_id`, `start`, `end`, `status`) "
