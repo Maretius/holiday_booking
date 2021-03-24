@@ -42,7 +42,7 @@ public class Flat {
     }
 
     public static int readOneName(String flatname) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM flats WHERE name="+flatname ;
+        String sql = "SELECT * FROM flats WHERE name='"+flatname+"'";
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
         Flat flat = new Flat();
         while (rs.next()) {

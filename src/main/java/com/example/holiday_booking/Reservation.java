@@ -20,8 +20,9 @@ public class Reservation {
         int flat_id = Flat.readOneName(flatname);
         Timestamp start = convertStringToTimestamp(startdate);
         Timestamp end = convertStringToTimestamp(enddate);
+        System.out.println(start + " " + end);
         String sql = "INSERT INTO `reservation`(`user_id`, `flat_id`, `start`, `end`, `status`) "
-               + "VALUES ('"+user_id+"', '"+flat_id+"', '"+start+"', '"+end+"', `reserviert`)";
+               + "VALUES ("+user_id+", "+flat_id+", '"+start+"', '"+end+"', 'reserviert')";
         System.out.println(sql);
          DBConnection.connecttoDBtoUpdate(sql);
 

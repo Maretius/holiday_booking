@@ -32,7 +32,7 @@ public class User {
     }
 
     public static int readOneEmail(String email) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM users WHERE email='"+email;
+        String sql = "SELECT * FROM users WHERE email='"+email.trim()+"'";
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
         User user = new User();
         while (rs.next()) {
