@@ -32,7 +32,10 @@
         System.out.println(request.getParameter("wohnung"));
         System.out.println(request.getParameter("startdate"));
         System.out.println(request.getParameter("enddate"));
-        session.setAttribute("prüfungerfolgreich", "Geilo");
+        if(!Reservation.readOne(request.getParameter("wohnung"), request.getParameter("startdate"), request.getParameter("enddate"))){
+            session.setAttribute("prüfungerfolgreich", "Geilo");
+        }
+
     }
 
 

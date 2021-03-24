@@ -3,7 +3,7 @@ import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.*;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Reservation {
@@ -27,6 +27,62 @@ public class Reservation {
          DBConnection.connecttoDBtoUpdate(sql);
 
     }
+
+    public static boolean readOne(String flatname, String startstring, String endstring) throws SQLException, ClassNotFoundException {
+        int flat_id = Flat.readOneName(flatname);
+        Timestamp start = convertStringToTimestamp(startstring);
+        Timestamp end = convertStringToTimestamp(endstring);
+        String sql = "SELECT * FROM reservation WHERE flat_id="+flat_id+" AND start='"+start+"' AND '"+end+"'";
+        ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
+
+        ArrayList<Reservation> reservationlist = new ArrayList<>();
+        boolean reserved = false;
+        boolean beginningreserved = false;
+        boolean endingreserved = false;
+
+        while (rs.next()) {
+            Reservation reservation = new Reservation();
+            reservation.id = rs.getInt("id");
+            reservation.flat_id = rs.getInt("flat_id");
+            reservation.user_id = rs.getInt("user_id");
+            reservation.start = rs.getTimestamp("start");
+            reservation.end = rs.getTimestamp("end");
+            reservation.status = rs.getString("status");
+            reservationlist.add(reservation);
+        }
+
+        for (Reservation reservation: reservationlist) {
+            Date startdate = convertTimestampToDate(start);
+            Date enddate = convertTimestampToDate(end);
+
+            Date reservationstartdate = convertTimestampToDate(reservation.start);
+            Date reservationenddate = convertTimestampToDate(reservation.end);
+
+            if(isWithinRange(startdate, reservationstartdate, reservationenddate)){
+                beginningreserved = true;
+            }
+            if(isWithinRange(enddate, reservationstartdate, reservationenddate)){
+                endingreserved = true;
+            }
+        }
+
+        if(beginningreserved || endingreserved){
+            reserved = true;
+        }
+
+        return reserved;
+    }
+
+    public static boolean isWithinRange(Date testDate, Date startDate, Date endDate) {
+        return !(testDate.before(startDate) || testDate.after(endDate));
+    }
+
+    public static Date convertTimestampToDate(Timestamp stamp){
+        Date date = new Date(stamp.getTime());
+        System.out.println(date);
+        return date;
+    }
+
 
     public static Timestamp convertStringToTimestamp(String strDate) {
         try {
