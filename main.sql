@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 21. Mrz 2021 um 12:32
+-- Erstellungszeit: 24. Mrz 2021 um 13:19
 -- Server-Version: 10.4.18-MariaDB
 -- PHP-Version: 8.0.3
 
@@ -66,6 +66,14 @@ CREATE TABLE `reservation` (
                                `status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Daten für Tabelle `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `user_id`, `flat_id`, `start`, `end`, `status`) VALUES
+(5, 1, 1, '2021-01-23 23:03:00', '2021-01-23 23:03:00', 'reserviert'),
+(6, 1, 1, '2021-01-23 23:03:00', '2021-01-03 23:04:00', 'reserviert');
+
 -- --------------------------------------------------------
 
 --
@@ -127,7 +135,7 @@ ALTER TABLE `flats`
 -- AUTO_INCREMENT für Tabelle `reservation`
 --
 ALTER TABLE `reservation`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
