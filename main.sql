@@ -61,8 +61,8 @@ CREATE TABLE `reservation` (
                                `id` int(11) NOT NULL,
                                `user_id` int(11) DEFAULT NULL,
                                `flat_id` int(11) DEFAULT NULL,
-                               `start` timestamp NULL DEFAULT NULL,
-                               `end` timestamp NULL DEFAULT NULL,
+                               `start` DATE NULL DEFAULT NULL,
+                               `end` DATE NULL DEFAULT NULL,
                                `status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -71,8 +71,8 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `user_id`, `flat_id`, `start`, `end`, `status`) VALUES
-(5, 1, 1, '2021-01-23 23:03:00', '2021-01-23 23:03:00', 'reserviert'),
-(6, 1, 1, '2021-01-23 23:03:00', '2021-01-03 23:04:00', 'reserviert');
+(5, 1, 1, '2021-01-23', '2021-01-23', 'reserviert'),
+(6, 1, 1, '2021-01-23', '2021-01-03', 'reserviert');
 
 -- --------------------------------------------------------
 

@@ -59,6 +59,24 @@ hr {
 
 
 
+table, th, td {
+    border: 1px solid black;
+}
+
+.table-day {
+    background-color: #9ccfc5;
+}
+.table-calendarday {
+
+}
+.tabelle-reserviert {
+    background-color: #cf9c9e;
+}
+.tabelle-gebucht {
+     background-color: #cfcc9c;
+ }
+
+
 .navbar-ul {
     list-style-type: none;
     margin: 0;
