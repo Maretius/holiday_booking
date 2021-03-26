@@ -16,7 +16,7 @@
 <%
     ArrayList<Flat> flatlist = new ArrayList<Flat>();
     try {
-        flatlist=Flat.readAll();
+        flatlist = Flat.readAll();
     } catch (SQLException throwables) {
         throwables.printStackTrace();
     } catch (ClassNotFoundException e) {
