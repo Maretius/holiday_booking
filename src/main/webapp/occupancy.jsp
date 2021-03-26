@@ -1,6 +1,4 @@
 <%@ page import="com.example.holiday_booking.Reservation" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="java.time.LocalDate" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>

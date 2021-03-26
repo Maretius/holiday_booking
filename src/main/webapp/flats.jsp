@@ -41,12 +41,13 @@
         </div>
         <div class="flat-div-middle-bot">
             <span class="material-icons">
-                <% if (flat.wifi == 1){ %>wifi
-                <% } if(flat.tv == 1){ %>personal_video
-                <% } if(flat.shower == 1){ %>shower
-                <% } if(flat.kitchen == 1){ %>countertops
-                <% } if(flat.washer == 1){ %>local_laundry_service
-                <% } %>
+                <%
+                    if(flat.wifi == 1) out.println("wifi");
+                    if(flat.tv == 1) out.println("personal_video");
+                    if(flat.shower == 1) out.println("shower");
+                    if(flat.kitchen == 1) out.println("countertops");
+                    if(flat.washer == 1) out.println("local_laundry_service");
+                %>
             </span>
         </div>
     </div>

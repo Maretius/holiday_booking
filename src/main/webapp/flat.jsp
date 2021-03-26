@@ -50,12 +50,13 @@
         </div>
         <div>
             <ul>
-                <% if (flat.wifi == 1){ %><li>WiFi <span class="material-icons">wifi</span></li>
-                <% } if(flat.tv == 1){ %><li>TV <span class="material-icons">personal_video</span></li>
-                <% } if(flat.shower == 1){ %><li>Dusche <span class="material-icons">shower</span></li>
-                <% } if(flat.kitchen == 1){ %><li>Küche <span class="material-icons">countertops</span></li>
-                <% } if(flat.washer == 1){ %><li>Waschmaschine <span class="material-icons">local_laundry_service</span></li>
-                <% } %>
+                <%
+                    if (flat.wifi == 1) out.println("<li>WiFi <span class=\"material-icons\">wifi</span></li>");
+                    if(flat.tv == 1) out.println("<li>TV <span class=\"material-icons\">personal_video</span></li>");
+                    if(flat.shower == 1) out.println("<li>Dusche <span class=\"material-icons\">shower</span></li>");
+                    if(flat.kitchen == 1) out.println("<li>Küche <span class=\"material-icons\">countertops</span></li>");
+                    if(flat.washer == 1) out.println("<li>Waschmaschine <span class=\"material-icons\">local_laundry_service</span></li>");
+                %>
             </ul>
         </div>
     </div>

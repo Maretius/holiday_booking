@@ -62,6 +62,12 @@ hr {
 table, th, td {
     border: 1px solid black;
 }
+.kalendar {
+    margin: 20px;
+    float: left;
+    text-align: center;
+    font-size: 18px;
+}
 
 .table-day {
     background-color: #9ccfc5;
@@ -69,10 +75,10 @@ table, th, td {
 .table-calendarday {
 
 }
-.tabelle-reserviert {
+.table-reserviert {
     background-color: #cf9c9e;
 }
-.tabelle-gebucht {
+.table-gebucht {
      background-color: #cfcc9c;
  }
 

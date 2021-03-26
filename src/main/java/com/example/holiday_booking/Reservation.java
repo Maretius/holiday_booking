@@ -29,6 +29,23 @@ public class Reservation {
 
     }
 
+    public static ArrayList<Reservation> readFlat(int id) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM reservation WHERE flat_id="+id ;
+        ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        while (rs.next()) {
+            Reservation reservation = new Reservation();
+            reservation.id = rs.getInt("id");
+            reservation.user_id = rs.getInt("user_id");
+            reservation.flat_id =  rs.getInt("flat_id");
+            reservation.start =  rs.getDate("start");
+            reservation.end =  rs.getDate("end");
+            reservation.status =  rs.getString("status");
+            reservations.add(reservation);
+        }
+        return reservations;
+    }
+
     public static Reservation readOne(int id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM reservation WHERE id="+id ;
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
@@ -38,7 +55,7 @@ public class Reservation {
             reservation.user_id = rs.getInt("user_id");
             reservation.flat_id =  rs.getInt("flat_id");
             reservation.start =  rs.getDate("start");
-            reservation.end =  rs.getDate("ende");
+            reservation.end =  rs.getDate("end");
             reservation.status =  rs.getString("status");
         }
         return reservation;
