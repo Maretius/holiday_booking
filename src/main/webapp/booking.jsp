@@ -2,13 +2,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="com.example.holiday_booking.Reservation" %>
-<%@ page import="java.sql.Timestamp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Buchung</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -19,7 +17,7 @@
 
         String email = (String) session.getAttribute("loginemail");
         try {
-            Reservation.writeOne(email, request.getParameter("wohnung"), request.getParameter("startdate"), request.getParameter("enddate"));
+            Reservation.writeOne(email, Integer.parseInt(request.getParameter("wohnung")), request.getParameter("startdate"), request.getParameter("enddate"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -32,7 +30,7 @@
         System.out.println(request.getParameter("wohnung"));
         System.out.println(request.getParameter("startdate"));
         System.out.println(request.getParameter("enddate"));
-        if(!Reservation.readOne(request.getParameter("wohnung"), request.getParameter("startdate"), request.getParameter("enddate"))){
+        if(!Reservation.checkReserved(Integer.parseInt(request.getParameter("wohnung")), request.getParameter("startdate"), request.getParameter("enddate"))){
             session.setAttribute("prüfungerfolgreich", "Geilo");
         }
 
@@ -79,7 +77,7 @@
                         e.printStackTrace();
                     }
                     for (Flat flat : flatlist) {%>
-                <option <%if (request.getParameter("id") != null && Integer.parseInt(request.getParameter("id"))==flat.id){%>selected<% }%>><%=flat.name%></option>
+                <option <% if (request.getParameter("id") != null && Integer.parseInt(request.getParameter("id"))==flat.id){%>selected<% } %>value="<%=flat.id%>"><%=flat.name%></option>
                 <%  }%>
             </select>
         </label>
@@ -100,13 +98,12 @@
             if(session.getAttribute("prüfungerfolgreich") == null ) {
         %>
         <input type="submit" name="prüfen" value="Verfügbarkeit prüfen">
-        </FORM>
         <%}else{%>
         <input type="submit" name="jetztbuchen" value="Jetzt buchen">
-        </FORM>
-        <%  }%>
+        <%}%>
     </div>
 </div>
+</FORM>
 
 
 

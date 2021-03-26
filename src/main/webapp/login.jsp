@@ -10,18 +10,17 @@
 <body>
 <%@include  file="navbar.jsp" %>
 
-<% if(request.getParameter("emaillogin") != null && request.getParameter("passwordlogin") != null) {
-    User user = new User();
-    user = User.readOne(request.getParameter("emaillogin"), request.getParameter("passwordlogin"));
-    session.setAttribute("loginfirstname", user.firstname);
-    session.setAttribute("loginlastname", user.lastname);
-    session.setAttribute("loginemail", user.email);
-}
+<%
+    if(request.getParameter("emaillogin") != null && request.getParameter("passwordlogin") != null) {
+        User user = User.readOne(request.getParameter("emaillogin"), request.getParameter("passwordlogin"));
+        session.setAttribute("loginfirstname", user.firstname);
+        session.setAttribute("loginlastname", user.lastname);
+        session.setAttribute("loginemail", user.email);
+    }
     if(request.getParameter("firstnameregister") != null && request.getParameter("lastnameregister") != null && request.getParameter("emailregister") != null && request.getParameter("passwordregister") != null) {
         User.writeOne(request.getParameter("firstnameregister"), request.getParameter("lastnameregister"), request.getParameter("emailregister"), request.getParameter("passwordregister"), "guest");
         Thread.sleep(1000);
-        User user = new User();
-        user = User.readOne(request.getParameter("emailregister"), request.getParameter("passwordregister"));
+        User user = User.readOne(request.getParameter("emailregister"), request.getParameter("passwordregister"));
         session.setAttribute("loginfirstname", user.firstname);
         session.setAttribute("loginlastname", user.lastname);
         session.setAttribute("loginemail", user.email);
@@ -31,9 +30,7 @@
         session.removeAttribute("loginlastname");
         session.removeAttribute("loginemail");
     }
-%>
 
-<%
     if(session.getAttribute("loginemail") == null ) {
 %>
 <div>

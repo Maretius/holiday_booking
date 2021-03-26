@@ -37,7 +37,6 @@ public class User {
         User user = new User();
         while (rs.next()) {
             user.id = rs.getInt("id");
-
         }
         return user.id;
     }
@@ -51,8 +50,7 @@ public class User {
 
     private static String toHash(String password) {
         int hashcode = password.hashCode();
-        String hash = ""+hashcode+"";
-        return hash;
+        return ""+hashcode+"";
     }
 
 
