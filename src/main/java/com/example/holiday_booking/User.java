@@ -31,14 +31,17 @@ public class User {
         return user;
     }
 
-    public static int readOneEmail(String email) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM users WHERE email='"+email.trim()+"'";
+    public static User readOneUser(int userID) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM users WHERE id="+userID;
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
         User user = new User();
         while (rs.next()) {
             user.id = rs.getInt("id");
+            user.firstname  = rs.getString("firstname");
+            user.lastname  = rs.getString("lastname");
+            user.email  = rs.getString("email");
         }
-        return user.id;
+        return user;
     }
 
     public static void writeOne(String firstname, String lastname, String email, String password, String role) throws SQLException, ClassNotFoundException {

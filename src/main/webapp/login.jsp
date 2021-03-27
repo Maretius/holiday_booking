@@ -1,4 +1,8 @@
 <%@ page import="com.example.holiday_booking.User" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.holiday_booking.Reservation" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="com.example.holiday_booking.Flat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,26 +15,32 @@
 <%@include file="navbar.jsp" %>
 
 <%
-    if(request.getParameter("emaillogin") != null && request.getParameter("passwordlogin") != null) {
+    if (request.getParameter("emaillogin") != null && request.getParameter("passwordlogin") != null) {
         User user = User.readOne(request.getParameter("emaillogin"), request.getParameter("passwordlogin"));
+        session.setAttribute("loginid", user.id);
         session.setAttribute("loginfirstname", user.firstname);
         session.setAttribute("loginlastname", user.lastname);
         session.setAttribute("loginemail", user.email);
+        session.setAttribute("userRole", user.role);
     }
-    if(request.getParameter("firstnameregister") != null && request.getParameter("lastnameregister") != null && request.getParameter("emailregister") != null && request.getParameter("passwordregister") != null) {
+    if (request.getParameter("firstnameregister") != null && request.getParameter("lastnameregister") != null && request.getParameter("emailregister") != null && request.getParameter("passwordregister") != null) {
         User.writeOne(request.getParameter("firstnameregister"), request.getParameter("lastnameregister"), request.getParameter("emailregister"), request.getParameter("passwordregister"), "guest");
         User user = User.readOne(request.getParameter("emailregister"), request.getParameter("passwordregister"));
+        session.setAttribute("loginid", user.id);
         session.setAttribute("loginfirstname", user.firstname);
         session.setAttribute("loginlastname", user.lastname);
         session.setAttribute("loginemail", user.email);
+        session.setAttribute("userRole", user.role);
     }
-    if(request.getParameter("loggedinemail") != null){
+    if (request.getParameter("loggedinemail") != null) {
+        session.removeAttribute("loginid");
         session.removeAttribute("loginfirstname");
         session.removeAttribute("loginlastname");
         session.removeAttribute("loginemail");
+        session.removeAttribute("userRole");
     }
 
-    if(session.getAttribute("loginemail") == null ) {
+    if (session.getAttribute("loginemail") == null) {
 %>
 <div>
     <h3>Login</h3>
@@ -61,12 +71,34 @@
         </FORM>
     </div>
 </div>
-<%}else{%>
+<% } else {
+    ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+    int userId = (Integer) session.getAttribute("loginid");
+    String userRole = (String) session.getAttribute("userRole");
+
+    if (userRole.equals("admin")) {
+        try {
+            reservations = Reservation.readallFlats();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    } else {
+        try {
+            reservations = Reservation.readUserFlat(userId);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+%>
 <div>
     <h3>Hallo, <%=session.getAttribute("loginfirstname")%> <%=session.getAttribute("loginlastname")%> !</h3>
 </div>
-<div>
-    <div>
+<div class="center-middle">
+    <div class="user-information">
         <FORM ACTION="login.jsp" METHOD="POST">
             <label>
                <input type="email" id="useremail" name="loggedinemail" value="<%=session.getAttribute("loginemail")%>" readonly> E-Mail</label><br>
@@ -77,8 +109,53 @@
             <input type="submit" value="Abmelden">
         </FORM>
     </div>
+    <br>
+    <div class="user-reservations">
+        <table class="user-reservations-table">
+            <caption>Buchungen</caption>
+            <tr>
+                <th>Wohnung</th>
+                <th>Start</th>
+                <th>Ende</th>
+                <% if(userRole.equals("admin"))out.println("<th>Vorname</th><th>Nachname</th>");%>
+                <th>Status</th>
+            </tr>
+            <%
+                for (Reservation reservation : reservations) {
+                    Flat flat = new Flat();
+
+                    try {
+                        flat = Flat.readOne(reservation.flat_id);
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    if (userRole.equals("admin")) {
+                        User user = new User();
+                        try {
+                            user = User.readOneUser(reservation.user_id);
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        if(reservation.status.equals("reserviert")){
+                            out.println("<tr><td>"+flat.name+"</td><td>"+reservation.start+"</td><td>"+reservation.end+"</td><td>"+user.firstname+"</td><td>"+user.lastname+"</td><td>"); %>
+            <button onclick="<% changeFlatStatus(flat.id); %>">Akzeptieren</button></td></tr>
+            <%
+                        } else {
+                            out.println("<tr><td>"+flat.name+"</td><td>"+reservation.start+"</td><td>"+reservation.end+"</td><td>"+user.firstname+"</td><td>"+user.lastname+"</td><td>Akzeptiert</td></tr>");
+                        }
+                    } else {
+                        out.println("<tr><td>"+flat.name+"</td><td>"+reservation.start+"</td><td>"+reservation.end+"</td><td>"+reservation.status+"</td></tr>");
+                    }
+                }
+            %>
+        </table>
+    </div>
 </div>
-<%};%>
+<%}%>
 
 
 </body>

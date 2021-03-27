@@ -14,10 +14,9 @@
 
 <%
     if(session.getAttribute("prüfungerfolgreich") != null && session.getAttribute("loginemail") != null) {
-
-            String email = (String) session.getAttribute("loginemail");
+            int userID = (Integer) session.getAttribute("loginid");
             try {
-                Reservation.writeOne(email, Integer.parseInt(request.getParameter("wohnung")), request.getParameter("startdate"), request.getParameter("enddate"));
+                Reservation.writeOne(userID, Integer.parseInt(request.getParameter("wohnung")), request.getParameter("startdate"), request.getParameter("enddate"));
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             } catch (ClassNotFoundException e) {

@@ -147,7 +147,15 @@ table, th, td {
     background-image: url("../images/table-gebucht-half-left.png");
     background-position: center;
 }
-
+.user-reservations-table {
+    margin: auto;
+    border-collapse: collapse;
+    border-spacing: 4px 22px;
+    text-align: center;
+}
+.user-reservations-table td, th{
+    padding: 6px 22px;
+}
 
 .navbar-ul {
     list-style-type: none;
