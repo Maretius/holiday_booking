@@ -19,6 +19,7 @@ public class Reservation {
 
     public static void writeOne(String email, int flatId, String startdate, String enddate) throws SQLException, ClassNotFoundException {
         int userId = User.readOneEmail(email);
+
         Date start = convertStringToDate(startdate);
         Date end = convertStringToDate(enddate);
         System.out.println(start + " " + end);
@@ -65,63 +66,23 @@ public class Reservation {
     public static boolean checkReserved(int flatId, String startstring, String endstring) throws SQLException, ClassNotFoundException {
         Date start = convertStringToDate(startstring);
         Date end = convertStringToDate(endstring);
-        String sql = "SELECT * FROM reservation WHERE flat_id="+flatId+" AND start='"+start+"' AND '"+end+"'";
+        if(start.after(end)){
+            return true;
+        }
+        String sql = "SELECT * FROM `reservation` WHERE `flat_id`='"+flatId+"' AND (`start` BETWEEN '"+start+"' AND '"+end+"' OR `end` BETWEEN '"+start+"' AND '"+end+"' OR (start<='"+start+"' AND end>='"+end+"'));";
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
 
-        ArrayList<Reservation> reservationlist = new ArrayList<>();
-        boolean reserved = false;
-        boolean beginningreserved = false;
-        boolean endingreserved = false;
-
-        while (rs.next()) {
-            Reservation reservation = new Reservation();
-            reservation.id = rs.getInt("id");
-            reservation.user_id = rs.getInt("user_id");
-            reservation.flat_id = rs.getInt("flat_id");
-            reservation.start = rs.getDate("start");
-            reservation.end = rs.getDate("end");
-            reservation.status = rs.getString("status");
-            reservationlist.add(reservation);
+        if (!rs.next() ) {
+            System.out.println("no data");
+            return false;
+        }else{
+            return true;
         }
-
-
-        for (Reservation reservation: reservationlist) {
-            Date startdate = start;
-            Date enddate = end;
-
-            if(isWithinRange(startdate, reservation.start, reservation.end)){
-                beginningreserved = true;
-            }
-            if(isWithinRange(enddate, reservation.start, reservation.end)){
-                endingreserved = true;
-            }
-        }
-
-        if(beginningreserved || endingreserved){
-            reserved = true;
-        }
-
-        return reserved;
     }
-
-    public static boolean isWithinRange(Date testDate, Date startDate, Date endDate) {
-        return !(testDate.before(startDate) || testDate.after(endDate));
-    }
-
-    public static Date convertTimestampToDate(Timestamp stamp){
-        Date date = new Date(stamp.getTime());
-        System.out.println(date);
-        return date;
-    }
-
-
     public static Date convertStringToDate(String strDate) {
-        try {
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            return formatter.parse(strDate);
-        } catch (ParseException e) {
-            System.out.println("Exception :" + e);
-            return null;
-        }
+            java.sql.Date date = java.sql.Date.valueOf(strDate);
+            System.out.println("Date: " + date);
+            return date;
+
     }
 }

@@ -13,29 +13,31 @@
 <%@include  file="navbar.jsp" %>
 
 <%
-    if(session.getAttribute("prüfungerfolgreich") != null && request.getParameter("startdate") != null && request.getParameter("enddate") != null && request.getParameter("wohnung") != null) {
+    if(session.getAttribute("prüfungerfolgreich") != null && session.getAttribute("loginemail") != null) {
 
-        String email = (String) session.getAttribute("loginemail");
-        try {
-            Reservation.writeOne(email, Integer.parseInt(request.getParameter("wohnung")), request.getParameter("startdate"), request.getParameter("enddate"));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+            String email = (String) session.getAttribute("loginemail");
+            try {
+                Reservation.writeOne(email, Integer.parseInt(request.getParameter("wohnung")), request.getParameter("startdate"), request.getParameter("enddate"));
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
     }
 
-    if(request.getParameter("wohnung") != null && session.getAttribute("prüfungerfolgreich") == null) {
+    if(request.getParameter("wohnung") != null && session.getAttribute("prüfungerfolgreich") == null && !request.getParameter("startdate").equals("") && !request.getParameter("enddate").equals("")) {
         System.out.println("prüfen");
         System.out.println(request.getParameter("wohnung"));
         System.out.println(request.getParameter("startdate"));
         System.out.println(request.getParameter("enddate"));
         if(!Reservation.checkReserved(Integer.parseInt(request.getParameter("wohnung")), request.getParameter("startdate"), request.getParameter("enddate"))){
             session.setAttribute("prüfungerfolgreich", "Geilo");
+            session.removeAttribute("bereitsbelegt");
+        }else{
+            session.setAttribute("bereitsbelegt", "Geilo");
+            session.removeAttribute("prüfungerfolgreich");
         }
-
     }
-
 
 %>
 
@@ -77,7 +79,7 @@
                         e.printStackTrace();
                     }
                     for (Flat flat : flatlist) {%>
-                <option <% if (request.getParameter("id") != null && Integer.parseInt(request.getParameter("id"))==flat.id){%>selected<% } %>value="<%=flat.id%>"><%=flat.name%></option>
+                <option <%if(request.getParameter("id") != null && Integer.parseInt(request.getParameter("id"))==flat.id){%>selected<%}%> <%if (session.getAttribute("prüfungerfolgreich") != null && Integer.parseInt(request.getParameter("wohnung"))!=flat.id){%>disabled<%;}%>  value="<%=flat.id%>"><%=flat.name%></option>
                 <%  }%>
             </select>
         </label>
@@ -91,21 +93,20 @@
     <div>
 
         <label>
-            <input type="date" name="startdate"> Startdatum</label><br>
+            <input <%if (session.getAttribute("prüfungerfolgreich") != null){%>readonly<%;}%> type="date" name="startdate" value="<%if( request.getParameter("startdate") != null ){%><%=request.getParameter("startdate")%><%}%>" > Startdatum</label><br>
         <label>
-            <input type="date" name="enddate"> Enddatum</label><br>
-        <%
-            if(session.getAttribute("prüfungerfolgreich") == null ) {
-        %>
-        <input type="submit" name="prüfen" value="Verfügbarkeit prüfen">
-        <%}else{%>
-        <input type="submit" name="jetztbuchen" value="Jetzt buchen">
-        <%}%>
+            <input <%if (session.getAttribute("prüfungerfolgreich") != null){%>readonly<%;}%> type="date" name="enddate" value="<%if( request.getParameter("enddate") != null ){%><%=request.getParameter("enddate")%><%}%>" > Enddatum</label><br>
+
+        <input type="submit" name="jetztbuchen"  value="<%if(session.getAttribute("prüfungerfolgreich") != null){%>Jetzt buchen<%;}else{%>Verfügbarkeit prüfen<%}%>">
     </div>
+    <%if (session.getAttribute("bereitsbelegt") != null){ out.println("<p>Die Wohnung ist nicht verfügbar an diesem Datum </p>") ;}%>
 </div>
 </FORM>
+<%
+    if (session.getAttribute("prüfungerfolgreich") != null){
+%>
+<div><a href="booking.jsp"><button onclick="<%session.removeAttribute("prüfungerfolgreich");%>">Daten ändern</button></a></div>
 
-
-
+<%}%>
 </body>
 </html>
