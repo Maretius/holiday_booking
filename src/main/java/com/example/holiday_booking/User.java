@@ -27,7 +27,6 @@ public class User {
             user.role  = rs.getString("role");
             user.password = rs.getString("password");
         }
-        System.out.println(user.firstname);
         return user;
     }
 

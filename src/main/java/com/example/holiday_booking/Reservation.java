@@ -80,8 +80,8 @@ public class Reservation {
         return reservations;
     }
 
-    public static void changeFlatStatus(int flatId) throws SQLException, ClassNotFoundException {
-        String sql = "UPDATE reservation SET status=gebucht WHERE id="+flatId;
+    public static void changeFlatStatus(int reservationId) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE reservation SET status='gebucht' WHERE id="+reservationId;
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
     }
 

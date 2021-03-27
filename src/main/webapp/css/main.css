@@ -58,6 +58,7 @@ body {
 
 .flat-div-calendar {
     width: 100%;
+    float: left;
 }
 
 .flat-div-calendar-table {
@@ -111,9 +112,11 @@ hr {
 
 table, th, td {
     border: 1px solid black;
+    padding: 5px;
 }
 .kalendar {
     margin: 20px;
+    border-collapse: collapse;
     float: left;
     text-align: center;
     font-size: 18px;
@@ -123,28 +126,28 @@ table, th, td {
     background-color: #9ccfc5;
 }
 .table-calendarday {
-
+    border-collapse: collapse;
 }
 .table-reserviert {
-    background-color: #cf9c9e;
+    background-color: #e5e191;
 }
 .table-start-reserviert {
-    background-image: url("../images/table-reserviert-half-right.png");
-    background-position: center;
-}
-.table-end-reserviert {
-    background-image: url("../images/table-reserviert-half-left.png");
-    background-position: center;
-}
-.table-gebucht {
-     background-color: #e5e191;
-}
-.table-start-gebucht {
     background-image: url("../images/table-gebucht-half-right.png");
     background-position: center;
 }
-.table-end-gebucht {
+.table-end-reserviert {
     background-image: url("../images/table-gebucht-half-left.png");
+    background-position: center;
+}
+.table-gebucht {
+     background-color: #cf9c9e;
+}
+.table-start-gebucht {
+    background-image: url("../images/table-reserviert-half-right.png");
+    background-position: center;
+}
+.table-end-gebucht {
+    background-image: url("../images/table-reserviert-half-left.png");
     background-position: center;
 }
 .user-reservations-table {
@@ -153,7 +156,7 @@ table, th, td {
     border-spacing: 4px 22px;
     text-align: center;
 }
-.user-reservations-table td, th{
+.user-reservations-table td, .user-reservations-table th{
     padding: 6px 22px;
 }
 

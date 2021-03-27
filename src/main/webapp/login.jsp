@@ -15,6 +15,15 @@
 <%@include file="navbar.jsp" %>
 
 <%
+
+    if(request.getParameter("reservationId") != null){
+        int reservationId = Integer.parseInt(request.getParameter("reservationId"));
+        try {Reservation.changeFlatStatus(reservationId);} catch (SQLException throwables) {throwables.printStackTrace();} catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     if (request.getParameter("emaillogin") != null && request.getParameter("passwordlogin") != null) {
         User user = User.readOne(request.getParameter("emaillogin"), request.getParameter("passwordlogin"));
         session.setAttribute("loginid", user.id);
@@ -121,6 +130,7 @@
                 <th>Status</th>
             </tr>
             <%
+                int idcount=0;
                 for (Reservation reservation : reservations) {
                     Flat flat = new Flat();
 
@@ -142,7 +152,10 @@
                         }
                         if(reservation.status.equals("reserviert")){
                             out.println("<tr><td>"+flat.name+"</td><td>"+reservation.start+"</td><td>"+reservation.end+"</td><td>"+user.firstname+"</td><td>"+user.lastname+"</td><td>"); %>
-            <button onclick="<% changeFlatStatus(flat.id); %>">Akzeptieren</button></td></tr>
+            <FORM ACTION="login.jsp" METHOD="POST">
+                <input type="hidden" name="reservationId" value="<%=reservation.id%>">
+            <input type="submit"  id="<%=reservation.id%>" value="Akzeptieren"> </input>
+            </FORM></td></tr>
             <%
                         } else {
                             out.println("<tr><td>"+flat.name+"</td><td>"+reservation.start+"</td><td>"+reservation.end+"</td><td>"+user.firstname+"</td><td>"+user.lastname+"</td><td>Akzeptiert</td></tr>");
