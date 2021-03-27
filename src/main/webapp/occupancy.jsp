@@ -1,4 +1,7 @@
-<%@ page import="com.example.holiday_booking.Reservation" %>
+<%@ page import="com.example.holiday_booking.Flat" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.time.LocalDate" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -9,23 +12,44 @@
 <body>
 <%@include file="navbar.jsp" %>
 
-<jsp:include page="calendar.jsp">
-    <jsp:param name="year" value="2021"/>
-    <jsp:param name="month" value="3"/>
-    <jsp:param name="flatId" value="1"/>
-</jsp:include>
+<div class="center-middle">
+    <%
+        ArrayList<Flat> flatlist = new ArrayList<Flat>();
+        try {
+            flatlist = Flat.readAll();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-<jsp:include page="calendar.jsp">
-    <jsp:param name="year" value="2021"/>
-    <jsp:param name="month" value="4"/>
-    <jsp:param name="flatId" value="1"/>
-</jsp:include>
+        for (Flat flat : flatlist) {
+    %>
+    <div class="flat-div-calendar">
+        <div>
+            <h2><%=flat.name%></h2>
+        </div>
+        <div class="flat-div-calendar-table">
+            <%
+                int year = LocalDate.now().getYear();
+                int month = LocalDate.now().getMonthValue();
 
-<jsp:include page="calendar.jsp">
-    <jsp:param name="year" value="2021"/>
-    <jsp:param name="month" value="5"/>
-    <jsp:param name="flatId" value="1"/>
-</jsp:include>
+                for (int i = 0; i < 3; i++) {
+                    if((month+i) > 12){
+                        year = year - 1;
+                        month = month - 12;
+                    }
+            %>
+            <jsp:include page="calendar.jsp">
+                <jsp:param name="year" value="<%=year%>"/>
+                <jsp:param name="month" value="<%=month+i%>"/>
+                <jsp:param name="flatId" value="<%=flat.id%>"/>
+            </jsp:include>
+            <%}%>
+        </div>
+    </div>
+    <%}%>
+</div>
 
 </body>
 </html>

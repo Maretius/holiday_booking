@@ -32,19 +32,4 @@ public class DBConnection {
             stmt = conn.createStatement();
         return stmt.executeQuery(sql);
     }
-
-//    public static void createTable(){
-//        String sql = "CREATE TABLE REGISTRATION "
-//                + "(id INTEGER not NULL, "
-//                + " first VARCHAR(255), "
-//                + " last VARCHAR(255), "
-//                + " age INTEGER, "
-//                + " PRIMARY KEY ( id ))";
-//        connecttoDBtoUpdate(sql);
-//    }
-//    public static void insertIntoFlats(){
-//        String sql = "INSERT INTO Flats "
-//                + "VALUES (1001, 'Wohnung 1', 19, 200, 'Geile Wohnung', 'Mannheimer Straße 5-7', 1, 0, 1, 0, 1, 1)";
-//        connecttoDBtoUpdate(sql);
-//    }
 }

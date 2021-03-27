@@ -29,18 +29,19 @@ public class Reservation {
 
     }
 
-    public static ArrayList<Reservation> readFlat(int id) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM reservation WHERE flat_id="+id ;
+    public static ArrayList<Reservation> readFlat(int id, int year, int month) throws SQLException, ClassNotFoundException {
+        int nextMonth = month + 1;
+        String sql = "SELECT * FROM reservation WHERE flat_id="+id+" AND ((start>='"+year+"-"+month + "-01' and start<'"+year+"-"+nextMonth+"-01') OR (end>='"+year+"-"+month+"-01' and end<'"+year+"-"+nextMonth+ "-01'))";
         ResultSet rs = DBConnection.connecttoDBtoSelect(sql);
         ArrayList<Reservation> reservations = new ArrayList<>();
         while (rs.next()) {
             Reservation reservation = new Reservation();
             reservation.id = rs.getInt("id");
             reservation.user_id = rs.getInt("user_id");
-            reservation.flat_id =  rs.getInt("flat_id");
-            reservation.start =  rs.getDate("start");
-            reservation.end =  rs.getDate("end");
-            reservation.status =  rs.getString("status");
+            reservation.flat_id = rs.getInt("flat_id");
+            reservation.start = rs.getDate("start");
+            reservation.end = rs.getDate("end");
+            reservation.status = rs.getString("status");
             reservations.add(reservation);
         }
         return reservations;
@@ -82,6 +83,7 @@ public class Reservation {
             reservation.status = rs.getString("status");
             reservationlist.add(reservation);
         }
+
 
         for (Reservation reservation: reservationlist) {
             Date startdate = start;

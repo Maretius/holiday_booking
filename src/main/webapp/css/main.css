@@ -17,6 +17,11 @@ body {
     margin-bottom: 60px;
 }
 
+.center-middle {
+    width: 60%;
+    margin: auto;
+}
+
 .flat-div {
     width: 50%;
     height: 100px;
@@ -51,12 +56,57 @@ body {
     font-size: 14px;
 }
 
+.flat-div-calendar {
+    width: 100%;
+}
+
+.flat-div-calendar-table {
+
+}
+
+.flat-image-column {
+    float: left;
+    width: 40%;
+    padding: 10px;
+}
+.flat-image-column img {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.flat-image-column img:hover {
+    opacity: 1;
+}
+.flat-image-row {
+    width: 60%;
+    margin: auto;
+}
+.flat-image-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.flat-image {
+    position: relative;
+    display: none;
+}
+#flat-expandet-image {
+    width: 60%;
+}
+#flat-image-text {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+
+
 hr {
     width: 40%;
     margin-top: 40px;
     margin-bottom: 40px;
 }
-
 
 
 table, th, td {
@@ -78,9 +128,25 @@ table, th, td {
 .table-reserviert {
     background-color: #cf9c9e;
 }
+.table-start-reserviert {
+    background-image: url("../images/table-reserviert-half-right.png");
+    background-position: center;
+}
+.table-end-reserviert {
+    background-image: url("../images/table-reserviert-half-left.png");
+    background-position: center;
+}
 .table-gebucht {
-     background-color: #cfcc9c;
- }
+     background-color: #e5e191;
+}
+.table-start-gebucht {
+    background-image: url("../images/table-gebucht-half-right.png");
+    background-position: center;
+}
+.table-end-gebucht {
+    background-image: url("../images/table-gebucht-half-left.png");
+    background-position: center;
+}
 
 
 .navbar-ul {
@@ -131,13 +197,8 @@ a:link a:visited a:hover a:active{
     word-wrap: normal;
     white-space: nowrap;
     direction: ltr;
-
-    /* Support for all WebKit browsers. */
     -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
     text-rendering: optimizeLegibility;
-    /* Support for Firefox. */
     -moz-osx-font-smoothing: grayscale;
-    /* Support for IE. */
     font-feature-settings: 'liga';
 }
