@@ -130,7 +130,6 @@
                 <th>Status</th>
             </tr>
             <%
-                int idcount=0;
                 for (Reservation reservation : reservations) {
                     Flat flat = new Flat();
 

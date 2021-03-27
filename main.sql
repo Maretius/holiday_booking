@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 24. Mrz 2021 um 13:19
--- Server-Version: 10.4.18-MariaDB
--- PHP-Version: 8.0.3
+-- Erstellungszeit: 27. Mrz 2021 um 14:22
+-- Server-Version: 10.4.17-MariaDB
+-- PHP-Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,8 +61,8 @@ CREATE TABLE `reservation` (
                                `id` int(11) NOT NULL,
                                `user_id` int(11) DEFAULT NULL,
                                `flat_id` int(11) DEFAULT NULL,
-                               `start` DATE NULL DEFAULT NULL,
-                               `end` DATE NULL DEFAULT NULL,
+                               `start` date DEFAULT NULL,
+                               `end` date DEFAULT NULL,
                                `status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -71,8 +71,14 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `user_id`, `flat_id`, `start`, `end`, `status`) VALUES
-(5, 1, 1, '2021-01-23', '2021-01-23', 'reserviert'),
-(6, 1, 1, '2021-01-23', '2021-01-03', 'reserviert');
+(1, 1, 1, '2021-03-27', '2021-03-29', 'reserviert'),
+(2, 1, 1, '2021-04-11', '2021-04-16', 'gebucht'),
+(3, 4, 1, '2021-03-30', '2021-04-06', 'reserviert'),
+(4, 1, 1, '2021-05-14', '2021-05-21', 'reserviert'),
+(5, 1, 2, '2021-04-11', '2021-04-16', 'gebucht'),
+(6, 1, 2, '2021-05-10', '2021-05-24', 'gebucht'),
+(7, 1, 2, '2021-05-02', '2021-05-09', 'reserviert'),
+(8, 1, 2, '2021-03-18', '2021-03-25', 'reserviert');
 
 -- --------------------------------------------------------
 
@@ -94,8 +100,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `role`, `password`) VALUES
-(1, 'Hans', 'Günther', 'hansguenther@freemail.lul', 'guest', '1509442'),
-(2, 'Manfred', 'Auerbach', 'Auerhauer@freemail.lul', 'guest', '1509442');
+(1, 'Hans', 'Günther', 'hansguenther@freemail.lul', 'admin', '1509442'),
+(2, 'Manfred', 'Auerhauer', 'Auerhauer@freemail.lul', 'guest', '1509442'),
+(3, 'Jürgen', 'Erwürgen', 'milenaisteincockblocker@freemail.love', 'guest', '1509442');
 
 --
 -- Indizes der exportierten Tabellen
@@ -135,13 +142,13 @@ ALTER TABLE `flats`
 -- AUTO_INCREMENT für Tabelle `reservation`
 --
 ALTER TABLE `reservation`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints der exportierten Tabellen
