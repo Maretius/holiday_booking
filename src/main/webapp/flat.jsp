@@ -24,11 +24,11 @@
 <!-- Für die Bilder Galerie https://www.w3schools.com/howto/howto_js_tab_img_gallery.asp -->
 
 <div class="center-middle">
-    <div>
+    <div class="flat-header">
         <h1><%=flat.name%></h1>
     </div>
     <div class="flat-image">
-        <img id="flat-expandet-image" src="images/flats/<%=flat.id%>/Bild1.jpg" alt="Bild">
+        <img src="images/flats/<%=flat.id%>/Bild1.jpg" alt="Bild">
     </div>
     <div>
         <div>
@@ -43,7 +43,8 @@
         <div>
             <p>Weitere Infos:</p>
         </div>
-        <div><p><%=flat.info%></p>
+        <div class="flat-infos">
+            <p><%=flat.info%></p>
         </div>
     </div>
     <hr>
@@ -51,7 +52,7 @@
         <div>
             <p>Ausstattung:</p>
         </div>
-        <div>
+        <div class="flat-furnishing">
             <ul>
                 <%
                     if (flat.wifi == 1) out.println("<li>WiFi <span class=\"material-icons\">wifi</span></li>");
@@ -68,7 +69,7 @@
         <div>
             <p>Zur Buchung:</p>
         </div>
-        <div>
+        <div class="flat-booking">
             <p>Jetzt ab <%=flat.price%> € pro Nacht buchen <a href="booking.jsp?id=<%=flat.id%>"><button class="booking-button">Zur Buchung</button></a></p>
         </div>
     </div>

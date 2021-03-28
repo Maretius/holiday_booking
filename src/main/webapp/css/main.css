@@ -69,9 +69,24 @@ h1 {
     width: 100%;
     float: left;
 }
+.flat-header {
+    margin: 20px auto;
+}
 
-.flat-div-calendar-table {
-
+.flat-image img{
+    width: 80%;
+    object-fit: contain;
+}
+.flat-infos {
+    width: 60%;
+    margin: auto;
+}
+.flat-furnishing {
+    text-align: left;
+    margin-left: 40%;
+}
+.flat-booking {
+    padding-bottom: 70px;
 }
 
 hr {
