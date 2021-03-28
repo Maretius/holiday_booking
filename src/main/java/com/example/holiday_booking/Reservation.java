@@ -23,7 +23,6 @@ public class Reservation {
         System.out.println(start + " " + end);
         String sql = "INSERT INTO `reservation`(`user_id`, `flat_id`, `start`, `end`, `status`) "
                 + "VALUES ("+userID+", "+flatId+", '"+start+"', '"+end+"', 'reserviert')";
-        System.out.println(sql);
         DBConnection.connecttoDBtoUpdate(sql);
 
     }

@@ -13,6 +13,10 @@
 <%@include  file="navbar.jsp" %>
 
 <%
+    if(request.getParameter("buttonchange") != null){
+        session.removeAttribute("prüfungerfolgreich");
+        System.out.println("Session Variable entfernt");
+    }
     if(session.getAttribute("prüfungerfolgreich") != null && session.getAttribute("loginemail") != null) {
             int userID = (Integer) session.getAttribute("loginid");
             try {
@@ -26,9 +30,6 @@
 
     if(request.getParameter("wohnung") != null && session.getAttribute("prüfungerfolgreich") == null && !request.getParameter("startdate").equals("") && !request.getParameter("enddate").equals("")) {
         System.out.println("prüfen");
-        System.out.println(request.getParameter("wohnung"));
-        System.out.println(request.getParameter("startdate"));
-        System.out.println(request.getParameter("enddate"));
         if(!Reservation.checkReserved(Integer.parseInt(request.getParameter("wohnung")), request.getParameter("startdate"), request.getParameter("enddate"))){
             session.setAttribute("prüfungerfolgreich", "Geilo");
             session.removeAttribute("bereitsbelegt");
@@ -104,8 +105,10 @@
 <%
     if (session.getAttribute("prüfungerfolgreich") != null){
 %>
-<div><a href="booking.jsp"><button onclick="<%session.removeAttribute("prüfungerfolgreich");%>">Daten ändern</button></a></div>
-
+<FORM ACTION="booking.jsp" METHOD="POST">
+    <input type="hidden" name="buttonchange" value="changeData">
+    <input type="submit"  id="changebutton" value="Daten ändern">
+</FORM>
 <%}%>
 </body>
 </html>
