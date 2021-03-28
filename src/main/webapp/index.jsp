@@ -25,7 +25,7 @@
             <a href="flats.jsp">Zur Wohnungsübersicht</a><br>
 
         </div> <br>
-        <div><img src="images/flats/Wohnung%201/Bild3.jpg" style="width:700px;height:504px;" alt="Bild"></div>
+        <div><img src="images/flats/1/Bild3.jpg" style="width:700px;height:504px;" alt="Bild"></div>
     </div>
 
 </body>

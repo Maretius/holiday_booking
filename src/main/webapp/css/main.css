@@ -12,6 +12,10 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+h1 {
+    margin: 0;
+}
+
 .navbar {
     box-shadow: 0 0 50px #b5d2cd;
     margin-bottom: 60px;
@@ -23,28 +27,32 @@ body {
 }
 
 .flat-div {
-    width: 50%;
-    height: 100px;
+    width: 100%;
+    height: 200px;
     position: relative;
     margin: auto;
 }
 
 .flat-div-left {
     float: left;
-    width: 20%;
+    width: 30%;
 }
 
 .flat-div-left img {
-    height: 100px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .flat-div-middle {
     float: left;
-    width: 30%;
+    width: 40%;
 }
 
 .flat-div-middle-top {
-    font-size: 12px;
+    font-size: 14px;
+    text-align: left;
+    padding: 0 20px;
 }
 
 .flat-div-middle-bot {
@@ -53,6 +61,7 @@ body {
 
 .flat-div-right {
     float: left;
+    width: 30%;
     font-size: 14px;
 }
 
@@ -65,50 +74,11 @@ body {
 
 }
 
-.flat-image-column {
-    float: left;
-    width: 40%;
-    padding: 10px;
-}
-.flat-image-column img {
-    opacity: 0.8;
-    cursor: pointer;
-}
-.flat-image-column img:hover {
-    opacity: 1;
-}
-.flat-image-row {
-    width: 60%;
-    margin: auto;
-}
-.flat-image-row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-.flat-image {
-    position: relative;
-    display: none;
-}
-#flat-expandet-image {
-    width: 60%;
-}
-#flat-image-text {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    color: white;
-    font-size: 20px;
-}
-
-
-
 hr {
-    width: 40%;
+    width: 80%;
     margin-top: 40px;
     margin-bottom: 40px;
 }
-
 
 table, th, td {
     border: 1px solid black;

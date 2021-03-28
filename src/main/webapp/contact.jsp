@@ -9,10 +9,19 @@
 <body>
 <%@include  file="navbar.jsp" %>
 
-<div>
+<div class="center-middle">
     <h1>Kontakt</h1>
     <hr>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    <h3>Adresse</h3>
+    <p>Zum Verwechlen Ähnlich 24</p>
+    <p>Hastenichtgesehen 12345</p>
+    <p>Deutschland</p>
+    <hr>
+    <h3>Telefon</h3>
+    <p>123 4567 890</p>
+    <hr>
+    <h3>E-Mail</h3>
+    <p>daswillstdu@nicht.wissen</p>
     <hr>
 </div>
 

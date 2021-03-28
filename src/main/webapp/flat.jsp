@@ -23,26 +23,13 @@
 
 <!-- Für die Bilder Galerie https://www.w3schools.com/howto/howto_js_tab_img_gallery.asp -->
 
-<div>
+<div class="center-middle">
     <div>
         <h1><%=flat.name%></h1>
     </div>
     <div class="flat-image">
-        <img id="flat-expandet-image" src="images/flats/<%=flat.name%>/Bild1.jpg" alt="Bild">
-        <div id="flat-image-text"></div>
+        <img id="flat-expandet-image" src="images/flats/<%=flat.id%>/Bild1.jpg" alt="Bild">
     </div>
-    <div class="flat-image-row">
-        <div class="flat-image-column">
-            <img src="images/flats/<%=flat.name%>/Bild1.jpg" alt="Nature" onclick="myFunction(this);">
-        </div>
-        <div class="flat-image-column">
-            <img src="images/flats/<%=flat.name%>/Bild2.jpg" alt="Snow" onclick="myFunction(this);">
-        </div>
-<%--        <div class="flat-image-column">--%>
-<%--            <img src="images/flats/<%=flat.name%>/Bild3" alt="Mountains" onclick="myFunction(this);">--%>
-<%--        </div>--%>
-    </div>
-
     <div>
         <div>
             <p>Zimmer:</p>
@@ -86,14 +73,5 @@
         </div>
     </div>
 </div>
-<script>
-    function myFunction(imgs) {
-        var expandImg = document.getElementById("flat-expandet-image");
-        var imgText = document.getElementById("flat-image-text");
-        expandImg.src = imgs.src;
-        imgText.innerHTML = imgs.alt;
-        expandImg.parentElement.style.display = "block";
-    }
-</script>
 </body>
 </html>
