@@ -46,6 +46,7 @@
 
 <div class="center-middle">
     <h1>Buchung</h1>
+    <hr>
     <div>
         <% if (session.getAttribute("loginemail") == null) { %>
         <div>Wie es scheint bist du noch nicht eingeloggt. Logge dich hier ein!<a href="login.jsp">

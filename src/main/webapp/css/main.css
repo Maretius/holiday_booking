@@ -99,6 +99,20 @@ table, th, td {
     border: 1px solid black;
     padding: 5px;
 }
+.legende {
+    margin: 20px;
+    border: none;
+    float: left;
+    text-align: center;
+    font-size: 18px;
+}
+.legende-gebucht-colorfield {
+    background-color: #cf9c9e;
+}
+.legende-reserviert-colorfield{
+    background-color: #e5e191;
+}
+
 .kalendar {
     margin: 20px;
     border-collapse: collapse;

@@ -13,6 +13,14 @@
 <%@include file="navbar.jsp" %>
 
 <div class="center-middle">
+    <table id="legende" class="legende">
+        <tr>
+            <td class="legende-reserviert-colorfield">&nbsp;</td>
+            <td class="legende-reserviert-textfield">reserviert</td>
+            <td class="legende-gebucht-colorfield">&nbsp;</td>
+            <td class="legende-gebucht-textfield">gebucht</td>
+        </tr>
+    </table>
     <%
         ArrayList<Flat> flatlist = new ArrayList<Flat>();
         try {
