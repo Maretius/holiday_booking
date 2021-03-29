@@ -54,7 +54,7 @@
 <div>
     <h3>Login</h3>
 </div>
-<div>
+<div class="center-middle">
     <div>
         <FORM ACTION="login.jsp" METHOD="POST">
         <label>
@@ -103,10 +103,9 @@
         }
     }
 %>
-<div>
-    <h3>Hallo, <%=session.getAttribute("loginfirstname")%> <%=session.getAttribute("loginlastname")%> !</h3>
-</div>
 <div class="center-middle">
+    <h2>Hallo, <%=session.getAttribute("loginfirstname")%> <%=session.getAttribute("loginlastname")%> !</h2>
+    <hr>
     <div class="user-information">
         <FORM ACTION="login.jsp" METHOD="POST">
             <label>

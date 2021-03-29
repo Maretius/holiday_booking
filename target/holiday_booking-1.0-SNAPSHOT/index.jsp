@@ -8,10 +8,9 @@
 <body>
 <%@include  file="navbar.jsp" %>
 
-    <div class="contents">
-        <div id="contentname">
+    <div class="center-middle">
             <h2>Herzlich Willkommen!</h2>
-        </div>
+        <hr>
         <br>
         <div class="indexdiv">
             Wenn Sie ein ruhiges zu Hause für Ihren Urlaub suchen, schauen Sie sich auf unserer Homepage einmal um.<br>

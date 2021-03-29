@@ -48,8 +48,8 @@ CREATE TABLE `flats` (
 --
 
 INSERT INTO `flats` (`id`, `name`, `size`, `price`, `info`, `adress`, `singlebed`, `doublebed`, `wifi`, `tv`, `shower`, `kitchen`, `washer`) VALUES
-(1, 'Wohnung 1', 22, 210, 'Geile Wohnung', 'Mannheimer Straße 5-7', 1, 0, 1, 1, 1, 1, 0),
-(2, 'Wohnung 2', 19, 190, 'Geile Wohnung', 'Mannheimer Straße 5-7', 1, 0, 1, 0, 1, 1, 1);
+(1, 'Wohnung Straßenlärm', 22, 210, 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren', 'Mannheimer Straße 5-7', 1, 0, 1, 1, 1, 1, 0),
+(2, 'Wohnung Betonblick', 19, 190, 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren', 'Mannheimer Straße 5-7', 1, 0, 1, 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
